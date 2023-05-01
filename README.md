@@ -13,12 +13,14 @@ pip install cantools
 
 Assuming the following folder structure:
 
-DBC-2-CPP-py
---->build_dbc_cpp_code.py
-
-CAN-generated
----> gm_global_a_powertrain.dbc
----> Generated .h or .cpp files go here
+```
+.
+├── DBC-2-CPP-py
+├─────── build_dbc_cpp_code.py
+├── CAN-generated                    
+├─────── gm_global_a_powertrain.dbc
+├─────── <generated .c and .h files>
+```
 
 ```
 python build_dbc_cpp_code.py ..\CAN-generated\gm_global_a_powertrain.dbc --o ..\CAN-generated -p GM_LAN
