@@ -1,26 +1,31 @@
-# convert_dbc_to_cpp_file
-this python file can convert dbc (canbus) to cpp(cplusplus) function 
+# DBC-2-CPP-py
+This is a fork https://github.com/jobgeodev/convert_dbc_to_cpp_file. The script is a wrapper around generate_c_source from cantools. So you can easily convert DBC files (CAN definition files) to C++ helper functions to decode and encode CAN messages without having to work on a bit/byte level.
+It contains a few changes to make it Arduino compatible, so you can use it in combination with autowp's MCP2515 library (https://github.com/autowp/arduino-mcp2515).
+It also contains bugfixes and a generic cli interface. A good source for DBC files is https://github.com/commaai/opendbc.
 
-## 步骤
 
-### 1.  在python环境内安装 cantools
+### 1.  Install cantools
 ```
 pip install cantools
 ```
 
-### 2.  修改work_dir和namespace
+### 2.  Example use
+
+Assuming the following folder structure:
+
+DBC-2-CPP-py
+--->build_dbc_cpp_code.py
+
+CAN-generated
+---> gm_global_a_powertrain.dbc
+---> Generated .h or .cpp files go here
+
 ```
-    work_dir = r'/home/wanhy/Project/Github/workspace/python/cantools/dbcs'    
-    wrap = build_dbc_cpp_wrap(work_dir, ".", "Skoda")   
-    wrap.run()
+python build_dbc_cpp_code.py ..\CAN-generated\gm_global_a_powertrain.dbc --o ..\CAN-generated -p GM_LAN
+
 ```
 
-### 3. 执行python文件
+You should see:
 ```
-python  build_dbc_cpp_code.py
-```
-
-### 4. 格式化代码
-```
-vs code or qtcreater
+Successfully generated ..\CAN-generated\gm_global_a_powertrain.h and ..\CAN-generated\gm_global_a_powertrain.c.
 ```
