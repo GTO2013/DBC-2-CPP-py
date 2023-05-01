@@ -1,5 +1,5 @@
 # DBC-2-CPP-py
-This is a fork https://github.com/jobgeodev/convert_dbc_to_cpp_file. The script is a wrapper around generate_c_source from cantools. So you can easily convert DBC files (CAN definition files) to C++ helper functions to decode and encode CAN messages without having to work on a bit/byte level.
+This is a fork https://github.com/jobgeodev/convert_dbc_to_cpp_file. The script is a wrapper around generate_c_source from cantools, so you can just pass the received can message into a PARSE_ function and get the individual signals back.
 It contains a few changes to make it Arduino compatible, so you can use it in combination with autowp's MCP2515 library (https://github.com/autowp/arduino-mcp2515).
 It also contains bugfixes and a generic cli interface. A good source for DBC files is https://github.com/commaai/opendbc.
 
