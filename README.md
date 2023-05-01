@@ -31,3 +31,19 @@ You should see:
 ```
 Successfully generated ..\CAN-generated\gm_global_a_powertrain.h and ..\CAN-generated\gm_global_a_powertrain.c.
 ```
+
+Usage in code:
+```
+        struct can_frame currentFrame;
+
+        if (m_mcp2515.readMessage(&currentFrame) == MCP2515::ERROR_OK)
+        {
+            T_ECM_ENGINE_STATUS data{};
+            int returnCode = PARSE_ECM_ENGINE_STATUS(currentFrame, data);
+            if (returnCode == 0)
+            {            
+                Serial.println(data.ENGINE_RPM);
+                Serial.println(data.ENGINE_TPS);
+            }
+        }
+```
